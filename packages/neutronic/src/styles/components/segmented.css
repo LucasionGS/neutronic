@@ -1,0 +1,106 @@
+.nt-segmented {
+  display: inline-flex;
+  align-items: stretch;
+  height: var(--nt-size-control-md);
+  border: 1px solid var(--nt-color-border);
+  border-radius: var(--nt-radius-control);
+  background: var(--nt-color-sunken);
+}
+
+.nt-segmented[data-size="sm"] {
+  height: var(--nt-size-control-sm);
+}
+
+.nt-segmented[data-size="lg"] {
+  height: var(--nt-size-control-lg);
+}
+
+.nt-segmented[data-full-width] {
+  display: flex;
+  width: 100%;
+}
+
+.nt-segmented[data-full-width] > .nt-segment {
+  flex: 1;
+}
+
+.nt-segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nt-space-2);
+  margin: 0;
+  padding: 0 var(--nt-space-3);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--nt-color-text-muted);
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-sm);
+  font-weight: var(--nt-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--nt-motion-duration-fast) var(--nt-motion-ease-standard),
+    color var(--nt-motion-duration-fast) var(--nt-motion-ease-standard);
+}
+
+.nt-segment + .nt-segment {
+  border-left: 1px solid var(--nt-color-border-muted);
+}
+
+.nt-segmented[data-size="sm"] > .nt-segment {
+  padding: 0 var(--nt-space-2);
+  font-size: var(--nt-text-xs);
+}
+
+.nt-segmented[data-size="lg"] > .nt-segment {
+  padding: 0 var(--nt-space-4);
+  font-size: var(--nt-text-md);
+}
+
+.nt-segment:hover:not([data-pressed], [data-disabled]) {
+  background: var(--nt-color-surface-raised);
+  color: var(--nt-color-text);
+}
+
+.nt-segment[data-pressed] {
+  position: relative;
+  background: var(--nt-color-accent);
+  color: var(--nt-color-on-accent);
+}
+
+.nt-segment[data-pressed]::before {
+  --_c: var(--nt-color-on-accent);
+
+  content: "";
+  position: absolute;
+  inset: 3px;
+  opacity: 0.55;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--_c), var(--_c)) top left / 5px 1px no-repeat,
+    linear-gradient(var(--_c), var(--_c)) top left / 1px 5px no-repeat,
+    linear-gradient(var(--_c), var(--_c)) bottom right / 5px 1px no-repeat,
+    linear-gradient(var(--_c), var(--_c)) bottom right / 1px 5px no-repeat;
+}
+
+.nt-segment[data-pressed] + .nt-segment,
+.nt-segment + .nt-segment[data-pressed] {
+  border-left-color: transparent;
+}
+
+.nt-segment[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nt-segmented[data-disabled] {
+  opacity: 0.5;
+}
+
+.nt-segmented[data-disabled] > .nt-segment[data-disabled] {
+  opacity: 1;
+}

@@ -1,0 +1,61 @@
+.nt-select {
+  cursor: pointer;
+}
+
+.nt-select-trigger {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--nt-space-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0 var(--nt-space-2) 0 var(--nt-space-3);
+  border: 0;
+  background: transparent;
+  color: var(--nt-color-text);
+  font: inherit;
+  font-size: var(--nt-text-md);
+  text-align: left;
+  cursor: inherit;
+  outline: none;
+}
+
+.nt-select-trigger:disabled {
+  cursor: not-allowed;
+}
+
+.nt-select-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nt-select-value[data-placeholder] {
+  color: var(--nt-color-text-subtle);
+}
+
+.nt-select-icon {
+  display: flex;
+  flex: none;
+  color: var(--nt-color-text-muted);
+  transition: transform var(--nt-motion-duration-fast) var(--nt-motion-ease-standard);
+}
+
+.nt-select-trigger[data-popup-open] .nt-select-icon {
+  transform: rotate(180deg);
+  color: var(--nt-color-accent);
+}
+
+.nt-input[data-size="sm"] .nt-select-trigger {
+  font-size: var(--nt-text-sm);
+}
+
+.nt-select-popup {
+  min-width: var(--anchor-width);
+}
+
+.nt-select:has([data-popup-open]) {
+  border-color: var(--nt-color-accent);
+}

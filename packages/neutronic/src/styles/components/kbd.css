@@ -1,0 +1,39 @@
+.nt-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border: 1px solid var(--nt-color-border-muted);
+  border-bottom: 2px solid var(--nt-color-border);
+  border-radius: var(--nt-radius-control);
+  background: var(--nt-color-sunken);
+  color: var(--nt-color-text-muted);
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-xs);
+  font-weight: var(--nt-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.nt-kbd[data-size="sm"] {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: var(--nt-text-2xs);
+}
+
+.nt-kbd-combo {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--nt-font-mono);
+  vertical-align: middle;
+}
+
+.nt-kbd-separator {
+  color: var(--nt-color-text-subtle);
+  font-size: var(--nt-text-2xs);
+}

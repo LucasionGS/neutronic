@@ -1,0 +1,124 @@
+.nt-tabs {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nt-tabs[data-orientation="vertical"] {
+  flex-direction: row;
+}
+
+.nt-tabs-list {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  gap: var(--nt-space-1);
+  border-bottom: 1px solid var(--nt-color-border-muted);
+}
+
+.nt-tabs-list[data-orientation="vertical"] {
+  flex-direction: column;
+  border-bottom: 0;
+  border-right: 1px solid var(--nt-color-border-muted);
+}
+
+.nt-tabs-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nt-space-2);
+  height: var(--nt-size-control-md);
+  padding: 0 var(--nt-space-3);
+  border: 0;
+  background: transparent;
+  color: var(--nt-color-text-muted);
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-sm);
+  font-weight: var(--nt-weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color var(--nt-motion-duration-fast) var(--nt-motion-ease-standard),
+    background-color var(--nt-motion-duration-fast) var(--nt-motion-ease-standard);
+}
+
+.nt-tabs-tab:hover:not([data-disabled]) {
+  color: var(--nt-color-text);
+}
+
+.nt-tabs-tab[data-active] {
+  color: var(--nt-color-text);
+}
+
+.nt-tabs-tab[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nt-tabs-indicator {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  z-index: 1;
+  width: var(--active-tab-width);
+  height: 2px;
+  translate: var(--active-tab-left) 0;
+  background: var(--nt-color-accent);
+  transition:
+    translate var(--nt-motion-duration-normal) var(--nt-motion-ease-standard),
+    width var(--nt-motion-duration-normal) var(--nt-motion-ease-standard);
+}
+
+.nt-tabs-indicator[data-orientation="vertical"] {
+  top: 0;
+  right: -1px;
+  bottom: auto;
+  left: auto;
+  width: 2px;
+  height: var(--active-tab-height);
+  translate: 0 var(--active-tab-top);
+  transition-property: translate, height;
+}
+
+.nt-tabs[data-variant="boxed"] > .nt-tabs-list {
+  gap: 0;
+  padding: var(--nt-space-1);
+  border: 1px solid var(--nt-color-border);
+  background: var(--nt-color-sunken);
+  width: fit-content;
+}
+
+.nt-tabs[data-variant="boxed"] .nt-tabs-tab {
+  height: calc(var(--nt-size-control-md) - 2 * var(--nt-space-1));
+}
+
+.nt-tabs[data-variant="boxed"] .nt-tabs-indicator {
+  top: 0;
+  bottom: auto;
+  height: var(--active-tab-height);
+  translate: var(--active-tab-left) var(--active-tab-top);
+  z-index: -1;
+  --_c: var(--nt-color-accent);
+  background:
+    linear-gradient(var(--_c), var(--_c)) top left / 5px 1px no-repeat,
+    linear-gradient(var(--_c), var(--_c)) top left / 1px 5px no-repeat,
+    linear-gradient(var(--_c), var(--_c)) bottom right / 5px 1px no-repeat,
+    linear-gradient(var(--_c), var(--_c)) bottom right / 1px 5px no-repeat,
+    var(--nt-color-accent-soft);
+}
+
+.nt-tabs-panel {
+  padding-top: var(--nt-space-4);
+  min-width: 0;
+  outline: none;
+}
+
+.nt-tabs[data-orientation="vertical"] > .nt-tabs-panel {
+  flex: 1;
+  padding-top: 0;
+  padding-left: var(--nt-space-5);
+}
+
+.nt-tabs-panel[data-hidden] {
+  display: none;
+}

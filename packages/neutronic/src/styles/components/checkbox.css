@@ -1,0 +1,74 @@
+.nt-choice {
+  --_line: calc(var(--nt-text-md) * var(--nt-leading-normal));
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--nt-space-2);
+  color: var(--nt-color-text);
+  font-size: var(--nt-text-md);
+  line-height: var(--nt-leading-normal);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nt-choice[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nt-choice-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.nt-choice-description {
+  color: var(--nt-color-text-muted);
+  font-size: var(--nt-text-sm);
+}
+
+.nt-checkbox {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-block: calc((var(--_line, 16px) - 16px) / 2);
+  padding: 0;
+  border: 1px solid var(--nt-color-border-strong);
+  border-radius: var(--nt-radius-control);
+  background: var(--nt-color-sunken);
+  color: var(--nt-color-on-accent);
+  cursor: pointer;
+  transition:
+    background-color var(--nt-motion-duration-fast) var(--nt-motion-ease-standard),
+    border-color var(--nt-motion-duration-fast) var(--nt-motion-ease-standard);
+}
+
+.nt-choice:hover .nt-checkbox[data-unchecked]:not([data-indeterminate], [data-disabled]),
+.nt-checkbox[data-unchecked]:not([data-indeterminate], [data-disabled]):hover {
+  border-color: var(--nt-color-accent);
+}
+
+.nt-checkbox[data-checked],
+.nt-checkbox[data-indeterminate] {
+  background: var(--nt-color-accent);
+  border-color: var(--nt-color-accent);
+}
+
+.nt-checkbox[data-invalid] {
+  border-color: var(--nt-color-danger);
+}
+
+.nt-checkbox[data-disabled] {
+  cursor: not-allowed;
+}
+
+.nt-checkbox:not(.nt-choice .nt-checkbox)[data-disabled] {
+  opacity: 0.5;
+}
+
+.nt-checkbox-indicator {
+  display: flex;
+}

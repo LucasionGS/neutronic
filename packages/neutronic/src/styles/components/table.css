@@ -1,0 +1,117 @@
+.nt-table-wrap {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--nt-color-border);
+  background: var(--nt-color-surface);
+}
+
+.nt-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--nt-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.nt-table-head {
+  height: var(--nt-size-control-md);
+  padding: 0 var(--nt-space-3);
+  background: var(--nt-color-surface);
+  border-bottom: 1px solid var(--nt-color-border);
+  color: var(--nt-color-text-muted);
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-xs);
+  font-weight: var(--nt-weight-medium);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.nt-table-head[data-numeric] {
+  text-align: right;
+}
+
+.nt-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nt-space-1);
+  margin: 0 calc(-1 * var(--nt-space-1));
+  padding: var(--nt-space-1);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.nt-table-sort:hover {
+  color: var(--nt-color-text);
+}
+
+.nt-table-sort-icon {
+  color: var(--nt-color-text-subtle);
+}
+
+.nt-table-head[aria-sort="ascending"],
+.nt-table-head[aria-sort="descending"] {
+  color: var(--nt-color-text);
+}
+
+.nt-table-head[aria-sort="ascending"] .nt-table-sort-icon,
+.nt-table-head[aria-sort="descending"] .nt-table-sort-icon {
+  color: var(--nt-color-accent);
+}
+
+.nt-table-cell {
+  height: var(--nt-size-control-md);
+  padding: 0 var(--nt-space-3);
+  border-bottom: 1px solid var(--nt-color-border-muted);
+  color: var(--nt-color-text);
+  vertical-align: middle;
+}
+
+.nt-table-cell[data-numeric] {
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-xs);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.nt-table-body > .nt-table-row:last-child > .nt-table-cell {
+  border-bottom: 0;
+}
+
+.nt-table-body > .nt-table-row:hover > .nt-table-cell {
+  background-color: var(--nt-color-surface-raised);
+}
+
+.nt-table-row[data-selected] > .nt-table-cell {
+  --_c: var(--nt-color-accent);
+  background-color: var(--nt-color-accent-soft);
+  background-repeat: no-repeat;
+}
+
+.nt-table-body > .nt-table-row[data-selected]:hover > .nt-table-cell {
+  background-color: var(--nt-color-accent-soft);
+}
+
+.nt-table-row[data-selected] > .nt-table-cell:first-child {
+  background-image: linear-gradient(var(--_c), var(--_c)), linear-gradient(var(--_c), var(--_c));
+  background-size: 5px 1px, 1px 5px;
+  background-position: top left, top left;
+}
+
+.nt-table-row[data-selected] > .nt-table-cell:last-child {
+  background-image: linear-gradient(var(--_c), var(--_c)), linear-gradient(var(--_c), var(--_c));
+  background-size: 5px 1px, 1px 5px;
+  background-position: bottom right, bottom right;
+}
+
+.nt-table-row[data-selected] > .nt-table-cell:only-child {
+  background-image:
+    linear-gradient(var(--_c), var(--_c)), linear-gradient(var(--_c), var(--_c)),
+    linear-gradient(var(--_c), var(--_c)), linear-gradient(var(--_c), var(--_c));
+  background-size: 5px 1px, 1px 5px, 5px 1px, 1px 5px;
+  background-position: top left, top left, bottom right, bottom right;
+}

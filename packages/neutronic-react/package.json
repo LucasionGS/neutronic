@@ -1,0 +1,29 @@
+{
+  "name": "@ionnet/neutronic-react",
+  "version": "0.0.0",
+  "description": "React components for the Neutronic design system.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./icons": "./src/icons.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.8.0",
+    "@ionnet/neutronic": "workspace:*",
+    "lucide-react": "^1.52.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

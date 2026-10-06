@@ -1,0 +1,183 @@
+.nt-toast-viewport {
+  position: fixed;
+  right: var(--nt-space-4);
+  bottom: var(--nt-space-4);
+  z-index: var(--nt-z-toast);
+  width: calc(100vw - var(--nt-space-8));
+  outline: none;
+}
+
+@media (min-width: 520px) {
+  .nt-toast-viewport {
+    right: var(--nt-space-6);
+    bottom: var(--nt-space-6);
+    width: 22.5rem;
+  }
+}
+
+.nt-toast {
+  --_tone: var(--nt-color-accent);
+  --_gap: var(--nt-space-2);
+  --_peek: var(--nt-space-2);
+  --_scale: calc(max(0, 1 - (var(--toast-index) * 0.05)));
+  --_shrink: calc(1 - var(--_scale));
+  --_height: var(--toast-frontmost-height, var(--toast-height));
+  --_offset-y: calc(
+    var(--toast-offset-y) * -1 + (var(--toast-index) * var(--_gap) * -1) + var(--toast-swipe-movement-y)
+  );
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: calc(1000 - var(--toast-index));
+  width: 100%;
+  height: var(--_height);
+  background: var(--nt-color-surface-raised);
+  border: 1px solid var(--nt-color-border);
+  border-radius: var(--nt-radius-surface);
+  box-shadow:
+    inset 2px 0 0 var(--_tone),
+    var(--nt-shadow-overlay);
+  color: var(--nt-color-text);
+  transform-origin: bottom center;
+  transform: translateX(var(--toast-swipe-movement-x))
+    translateY(calc(var(--toast-swipe-movement-y) - (var(--toast-index) * var(--_peek)) - (var(--_shrink) * var(--_height))))
+    scale(var(--_scale));
+  transition:
+    transform var(--nt-motion-duration-slow) var(--nt-motion-ease-standard),
+    opacity var(--nt-motion-duration-slow) var(--nt-motion-ease-standard),
+    height var(--nt-motion-duration-normal) var(--nt-motion-ease-standard);
+  user-select: none;
+  cursor: default;
+}
+
+.nt-toast::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: calc(var(--_gap) + 1px);
+}
+
+.nt-toast[data-type="success"] {
+  --_tone: var(--nt-color-success);
+}
+
+.nt-toast[data-type="warning"] {
+  --_tone: var(--nt-color-warning);
+}
+
+.nt-toast:is([data-type="danger"], [data-type="error"]) {
+  --_tone: var(--nt-color-danger);
+}
+
+.nt-toast[data-expanded] {
+  height: var(--toast-height);
+  transform: translateX(var(--toast-swipe-movement-x)) translateY(var(--_offset-y));
+}
+
+.nt-toast:has(> .nt-toast-content[data-behind]:not([data-expanded]))::before {
+  opacity: 0;
+}
+
+.nt-toast[data-starting-style],
+.nt-toast[data-ending-style] {
+  transform: translateY(150%);
+}
+
+.nt-toast[data-limited] {
+  opacity: 0;
+}
+
+.nt-toast[data-ending-style] {
+  opacity: 0;
+}
+
+.nt-toast[data-ending-style][data-swipe-direction="up"] {
+  transform: translateY(calc(var(--toast-swipe-movement-y) - 150%));
+}
+
+.nt-toast[data-ending-style][data-swipe-direction="down"] {
+  transform: translateY(calc(var(--toast-swipe-movement-y) + 150%));
+}
+
+.nt-toast[data-ending-style][data-swipe-direction="left"] {
+  transform: translateX(calc(var(--toast-swipe-movement-x) - 150%)) translateY(var(--_offset-y));
+}
+
+.nt-toast[data-ending-style][data-swipe-direction="right"] {
+  transform: translateX(calc(var(--toast-swipe-movement-x) + 150%)) translateY(var(--_offset-y));
+}
+
+.nt-toast-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nt-space-3);
+  height: 100%;
+  padding: var(--nt-space-3) var(--nt-space-2) var(--nt-space-3) var(--nt-space-4);
+  overflow: hidden;
+  transition: opacity var(--nt-motion-duration-normal) var(--nt-motion-ease-standard);
+}
+
+.nt-toast-content[data-behind] {
+  opacity: 0;
+}
+
+.nt-toast-content[data-expanded] {
+  opacity: 1;
+}
+
+.nt-toast-icon {
+  display: flex;
+  flex: none;
+  padding-top: 1px;
+  color: var(--_tone);
+}
+
+.nt-toast[data-type="loading"] .nt-toast-icon .nt-icon {
+  animation: nt-toast-spin 0.9s linear infinite;
+}
+
+.nt-toast-text {
+  display: grid;
+  flex: 1;
+  gap: var(--nt-space-1);
+  min-width: 0;
+}
+
+.nt-toast-title {
+  margin: 0;
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-sm);
+  font-weight: var(--nt-weight-medium);
+  line-height: var(--nt-leading-normal);
+}
+
+.nt-toast-description {
+  margin: 0;
+  color: var(--nt-color-text-muted);
+  font-size: var(--nt-text-sm);
+}
+
+.nt-toast-title:empty,
+.nt-toast-description:empty {
+  display: none;
+}
+
+.nt-toast-actions {
+  display: flex;
+  gap: var(--nt-space-2);
+  padding-top: var(--nt-space-1);
+}
+
+.nt-toast-close {
+  flex: none;
+  margin-top: calc(-1 * var(--nt-space-1));
+}
+
+@keyframes nt-toast-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

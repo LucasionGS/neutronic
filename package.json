@@ -1,0 +1,14 @@
+{
+  "name": "neutronic-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "dev": "pnpm --filter @ionnet/neutronic tokens && pnpm -r --parallel dev",
+    "tokens": "pnpm --filter @ionnet/neutronic tokens",
+    "typecheck": "pnpm tokens && pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}

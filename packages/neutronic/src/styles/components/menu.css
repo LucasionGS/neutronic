@@ -1,0 +1,52 @@
+.nt-menu {
+  min-width: 12rem;
+}
+
+.nt-menu-icon {
+  position: absolute;
+  left: var(--nt-space-2);
+  display: flex;
+  align-items: center;
+  color: var(--nt-color-text-muted);
+}
+
+.nt-menu-item[data-highlighted] > .nt-menu-icon {
+  color: var(--nt-color-text);
+}
+
+.nt-menu-item[data-danger] {
+  color: var(--nt-color-danger);
+}
+
+.nt-menu-item[data-danger] > .nt-menu-icon {
+  color: inherit;
+}
+
+.nt-menu-item[data-danger][data-highlighted] {
+  background: var(--nt-color-danger-soft);
+}
+
+.nt-menu-item[data-danger][data-highlighted]::before {
+  --_c: var(--nt-color-danger);
+}
+
+.nt-menu-item[data-popup-open] {
+  background: var(--nt-color-accent-soft);
+}
+
+.nt-menu-submenu-arrow {
+  display: flex;
+  margin-left: auto;
+  padding-left: var(--nt-space-4);
+  color: var(--nt-color-text-muted);
+}
+
+.nt-menu-radio-mark {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+}
+
+.nt-menu:has(.nt-menu-icon) :is(.nt-popup-item, .nt-popup-label) {
+  padding-left: var(--nt-space-8);
+}

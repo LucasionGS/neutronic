@@ -1,0 +1,21 @@
+.nt-popover {
+  display: grid;
+  gap: var(--nt-space-3);
+  min-width: 14rem;
+  max-width: min(22rem, var(--available-width, 22rem));
+  padding: var(--nt-space-4);
+}
+
+.nt-popover-title {
+  margin: 0;
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-sm);
+  font-weight: var(--nt-weight-medium);
+  line-height: var(--nt-leading-tight);
+}
+
+.nt-popover-description {
+  margin: calc(-1 * var(--nt-space-2)) 0 0;
+  color: var(--nt-color-text-muted);
+  font-size: var(--nt-text-sm);
+}

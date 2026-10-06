@@ -1,0 +1,20 @@
+.nt-stack {
+  display: flex;
+  flex-direction: var(--nt-stack-direction, column);
+  flex-wrap: var(--nt-stack-wrap, nowrap);
+  align-items: var(--nt-stack-align, stretch);
+  justify-content: var(--nt-stack-justify, flex-start);
+  gap: var(--nt-stack-gap, var(--nt-space-3));
+  min-width: 0;
+}
+
+.nt-grid {
+  display: grid;
+  grid-template-columns: var(--nt-grid-columns, minmax(0, 1fr));
+  gap: var(--nt-grid-gap, var(--nt-space-3));
+  min-width: 0;
+}
+
+.nt-grid > * {
+  min-width: 0;
+}

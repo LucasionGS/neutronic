@@ -1,0 +1,28 @@
+{
+  "name": "@ionnet/neutronic",
+  "version": "0.0.0",
+  "description": "Neutronic design system: framework-agnostic tokens, base CSS and component styles.",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles/index.css",
+    "./styles-no-fonts.css": "./src/styles/no-fonts.css",
+    "./tokens.json": "./src/generated/tokens.json"
+  },
+  "scripts": {
+    "tokens": "tsx scripts/build-tokens.ts",
+    "dev": "tsx watch --clear-screen=false scripts/build-tokens.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0"
+  }
+}

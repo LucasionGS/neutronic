@@ -1,0 +1,30 @@
+.nt-tooltip-positioner {
+  z-index: var(--nt-z-tooltip);
+}
+
+.nt-tooltip {
+  max-width: min(18rem, var(--available-width, 18rem));
+  padding: var(--nt-space-1) var(--nt-space-2);
+  background: var(--nt-color-surface-raised);
+  border: 1px solid var(--nt-color-border-strong);
+  border-radius: var(--nt-radius-control);
+  box-shadow: var(--nt-shadow-overlay);
+  color: var(--nt-color-text);
+  font-family: var(--nt-font-mono);
+  font-size: var(--nt-text-xs);
+  line-height: var(--nt-leading-normal);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--nt-motion-duration-fast) var(--nt-motion-ease-out),
+    transform var(--nt-motion-duration-fast) var(--nt-motion-ease-out);
+}
+
+.nt-tooltip[data-starting-style],
+.nt-tooltip[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.nt-tooltip[data-instant] {
+  transition-duration: 0ms;
+}
