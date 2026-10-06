@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "pnpm --filter @ionnet/neutronic tokens && pnpm -r --parallel dev",
     "tokens": "pnpm --filter @ionnet/neutronic tokens",
-    "typecheck": "pnpm tokens && pnpm -r typecheck"
+    "typecheck": "pnpm tokens && pnpm -r typecheck",
+    "build": "pnpm --filter './packages/*' -r build"
   },
   "devDependencies": {
+    "tsdown": "^0.23.0",
     "typescript": "^5.9.0"
   }
 }

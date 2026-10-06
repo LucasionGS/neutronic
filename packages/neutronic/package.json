@@ -1,7 +1,15 @@
 {
   "name": "@ionnet/neutronic",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Neutronic design system: framework-agnostic tokens, base CSS and component styles.",
+  "author": "Lucasion",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css",
+    "theme",
+    "neutronic"
+  ],
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -12,17 +20,37 @@
     "./styles-no-fonts.css": "./src/styles/no-fonts.css",
     "./tokens.json": "./src/generated/tokens.json"
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./styles.css": "./dist/styles.css",
+      "./styles-no-fonts.css": "./dist/styles-no-fonts.css",
+      "./tokens.css": "./dist/tokens.css",
+      "./tokens.json": "./dist/tokens.json",
+      "./package.json": "./package.json"
+    }
+  },
   "scripts": {
     "tokens": "tsx scripts/build-tokens.ts",
     "dev": "tsx watch --clear-screen=false scripts/build-tokens.ts",
-    "typecheck": "tsc -p tsconfig.json"
-  },
-  "devDependencies": {
-    "@types/node": "^26.6.4",
-    "tsx": "^4.23.15"
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "tsx scripts/build-tokens.ts && tsdown && tsx scripts/build-css.ts",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/ibm-plex-sans": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15"
   }
 }

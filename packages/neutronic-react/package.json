@@ -1,19 +1,47 @@
 {
   "name": "@ionnet/neutronic-react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React components for the Neutronic design system.",
+  "author": "Lucasion",
+  "keywords": [
+    "react",
+    "components",
+    "design-system",
+    "base-ui",
+    "neutronic"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
     "./icons": "./src/icons.ts"
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./icons": {
+        "types": "./dist/icons.d.ts",
+        "default": "./dist/icons.js"
+      },
+      "./package.json": "./package.json"
+    }
+  },
   "scripts": {
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "tsdown",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
-    "@ionnet/neutronic": "workspace:*",
+    "@ionnet/neutronic": "workspace:^",
     "lucide-react": "^1.52.0"
   },
   "peerDependencies": {
